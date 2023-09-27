@@ -17,6 +17,15 @@ function TodoMain() {
             setTask("")
         }
     }
+
+    const deleteItem = (id) => {
+        console.log(id);
+        setTaskArray((prevTasks) => {
+            return prevTasks.filter((ele, index) => {
+                return index !== id;
+            })
+        })
+    }
   return (
     <div>
         <div>
@@ -26,7 +35,7 @@ function TodoMain() {
         <div>
             <ol>
                 {taskArray.map((val, index) => {
-                    return <Todo key={index} text={val}/>
+                    return <Todo key={index} id={index} text={val} onSelect={deleteItem}/>
                 })}
             </ol>
         </div>
